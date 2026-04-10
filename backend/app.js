@@ -13,7 +13,7 @@ const io = connectToSocket(server);
 app.set("port", process.env.PORT || 8000);
 
 app.use(cors({
-  origin: "https://samwad-5p2x.onrender.com",
+  origin: "https://samwad-jb33.onrender.com/",
   credentials: true
 }));
 app.use(express.json({ limit: "40kb" }));
