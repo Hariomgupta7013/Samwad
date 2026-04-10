@@ -3,7 +3,7 @@ import { createServer } from "node:http";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
 import { connectToSocket } from "./controllers/socketManager.js";
-
+import path from "path"
 import cors from "cors";
 import userRoutes from "./routes/users_routes.js"
 
@@ -17,7 +17,12 @@ app.use(cors());
 app.use(express.json({ limit: "40kb" }));
 app.use(express.urlencoded({ limit: "40kb", extended: true }));
 
-app.use("/api/v1/users", userRoutes);
+app.use("/api/users", userRoutes);
+
+const __dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
 
 const start = async () => {
   server.listen(app.get("port"), () => {
@@ -30,3 +35,7 @@ const start = async () => {
 };
 
 start();
+
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+});

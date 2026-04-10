@@ -1,34 +1,58 @@
+import React from "react";
 import "../App.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+export default function LandingPage() {
+  const router = useNavigate();
 
-export default function landingPage() {
   return (
-    <div className="landigPageContainer">
+    <div className="landingPageContainer">
       <nav>
         <div className="navHeader">
           <h2>Apna Video Call</h2>
         </div>
         <div className="navlist">
-          <p>Join as Guest</p>
-          <p>Register</p>
-          <button>Login</button>
+          <p
+            onClick={() => {
+              const uniqueId =
+                Date.now().toString(36) +
+                Math.random().toString(36).substring(2, 6);
+              router(`/${uniqueId}`);
+            }}
+          >
+            Join as Guest
+          </p>
+          <p
+            onClick={() => {
+              router("/auth");
+            }}
+          >
+            Register
+          </p>
+          <div
+            onClick={() => {
+              router("/auth");
+            }}
+            role="button"
+          >
+            <p>Login</p>
+          </div>
         </div>
       </nav>
 
       <div className="landingMainContainer">
-        <div className="connectContainer">
+        <div>
           <h1>
-            <span style={{ color: "#ff9839" }}>Connect</span> with your loved
+            <span style={{ color: "#FF9839" }}>Connect</span> with your loved
             Ones
           </h1>
+
           <p>Cover a distance by Apna Video Call</p>
-          <div className="startedLinks">
-            <Link to="/auth">Get Started</Link>
+          <div role="button">
+            <Link to={"/auth"}>Get Started</Link>
           </div>
         </div>
-
-        <div className="mobileImageContainer">
-          <img src="/mobile.png" alt=""></img>
+        <div>
+          <img src="/mobile.png" alt="" />
         </div>
       </div>
     </div>
