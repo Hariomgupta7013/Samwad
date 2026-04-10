@@ -6,7 +6,6 @@ import { connectToSocket } from "./src/controllers/socketManager.js";
 import path from "path"
 import cors from "cors";
 import userRoutes from "./src/routes/users_routes.js"
-import cors from "cors"
 const app = express();
 const server = createServer(app);
 const io = connectToSocket(server);
