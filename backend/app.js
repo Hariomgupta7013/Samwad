@@ -15,13 +15,16 @@ const io = connectToSocket(server);
 app.set("port", process.env.PORT || 8000);
 
 app.use(cors({
-  origin: "https://samwad-jb33.onrender.com/",
-  credentials: true
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
-app.use(express.json({ limit: "40kb" }));
-app.use(express.urlencoded({ limit: "40kb", extended: true }));
+
+app.options("*", cors());
 
 app.use("/api/users", userRoutes);
+app.use(express.json({ limit: "40kb" }));
+app.use(express.urlencoded({ limit: "40kb", extended: true }));
 
 const __dirname = path.resolve();
 
