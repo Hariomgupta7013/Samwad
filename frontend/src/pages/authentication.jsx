@@ -79,6 +79,32 @@ export default function Authentication() {
     }
   };
 
+  // let handleAuth = async () => {
+  //       try {
+  //           if (formState === 0) {
+
+  //               let result = await handleLogin(username, password)
+
+
+  //           }
+  //           if (formState === 1) {
+  //               let result = await handleRegister(name, username, password);
+  //               console.log(result);
+  //               setUsername("");
+  //               setMessage(result);
+  //               setOpen(true);
+  //               setError("")
+  //               setFormState(0)
+  //               setPassword("")
+  //           }
+  //       } catch (err) {
+
+  //           console.log(err);
+  //           let message = (err.response.data.message);
+  //           setError(message);
+  //       }
+  //   }
+    
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
