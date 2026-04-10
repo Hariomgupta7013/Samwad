@@ -40,6 +40,9 @@ const login = async (req, res) => {
 const register = async (req, res) => {
     const { name, username, password } = req.body;
 
+        if (!name || !username || !password) {
+        return res.status(400).json({ message: "All fields are required" });
+    }
 
     try {
         const existingUser = await User.findOne({ username });
@@ -60,6 +63,7 @@ const register = async (req, res) => {
         res.status(httpStatus.CREATED).json({ message: "User Registered" })
 
     } catch (e) {
+        console.log(e)
         res.json({ message: `Something went wrong ${e}` })
     }
 
