@@ -5,10 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({});
 
-const client = axios.create({
-  baseURL: "http://localhost:8000/api/users",
-});
 
+const BASE_URL = "https://samwad-backend.onrender.com";
+
+const client = axios.create({
+  baseURL: `${BASE_URL}/api/users`
+});
 export const AuthProvider = ({ children }) => {
 
   const [userData, setUserData] = useState(null);
