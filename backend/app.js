@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { createServer } from "node:http";
-import { Server } from "socket.io";
+// import { Server } from "socket.io";
 import mongoose from "mongoose";
 import { connectToSocket } from "./src/controllers/socketManager.js";
 import path from "path"
@@ -44,6 +44,6 @@ const start = async () => {
 start();
 
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+    res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
 
