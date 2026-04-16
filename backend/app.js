@@ -20,11 +20,11 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-app.options("*", cors());
+// app.options(cors());
 
-app.use("/api/users", userRoutes);
 app.use(express.json({ limit: "40kb" }));
 app.use(express.urlencoded({ limit: "40kb", extended: true }));
+app.use("/api/users", userRoutes);
 
 const __dirname = path.resolve();
 
